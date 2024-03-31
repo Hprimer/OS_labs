@@ -125,45 +125,81 @@ int main() {
 
     print_time();
     cout << "[MESSAGE] Connected to server.\n";
+    try {
+        while (true) {
+            // Ввод сообщения с клавиатуры
+            string message;
+           
 
-    while (true) {
-        // Ввод сообщения с клавиатуры
-        string message;
-        cout << "Enter message to send to server: ";
-        getline(cin, message);
+            // Проверка на ввод
+            while (true) {
+                // Ввод сообщения с клавиатуры
+                cout << "Enter message to send to server: ";
+                getline(cin, message);
 
-        //if (message == "calc") {//здесь программа должна вывести результат и закончить работу
-        //    calculate();
-        //}
-        //else if (message == "check") {//программа проверяет на коррект и продолжает работу с предложением очистить строку
-        //    check_correctness();
-        //}
-        //if (message == "clear") {
-        //    clear_str();
-        //}
-       
-       
-        // Отправка сообщения серверу
-        fSuccess = WriteFile(hPipe, message.c_str(), message.size(), &cbIO, NULL);
-        if (!fSuccess) {
-            print_time();
-            cout << "[ERROR] WriteFile failed with " << GetLastError() << '\n';
-            break;
+                if (message == "calc" || message == "check" || message == "clear" || message == "break") {
+                    break;
+                }
+                else if (message.size() > 0 && (message[0] == '+' || message[0] == '-' ||
+                    message[0] == '/' || message[0] == '*')) {
+                    break;
+                }
+                else {
+                    cout << "Invalid input. Please enter a valid command or an arithmetic expression." << endl;
+                }
+            }
+            //getline(cin, message);
+
+            //if (message[0] != '+' or message[0] != '-' or message != "calc" && message != "check" && message != "clear" && message != "break") {
+            //    throw runtime_error("invalid input");
+            //}
+
+            //if (message == "calc") {//здесь программа должна вывести результат и закончить работу
+            //    calculate();
+            //}
+            //else if (message == "check") {//программа проверяет на коррект и продолжает работу с предложением очистить строку
+            //    check_correctness();
+            //}
+            //if (message == "clear") {
+            //    clear_str();
+            //}
+
+
+            // Отправка сообщения серверу
+            fSuccess = WriteFile(hPipe, message.c_str(), message.size(), &cbIO, NULL);
+            if (!fSuccess) {
+                print_time();
+                cout << "[ERROR] WriteFile failed with " << GetLastError() << '\n';
+                break;
+            }
+
+            // Чтение ответа от сервера
+            char buf[BUFSIZE];
+            fSuccess = ReadFile(hPipe, buf, BUFSIZE, &cbIO, NULL);
+            if (!fSuccess || cbIO == 0) {
+                print_time();
+                cout << "[ERROR] ReadFile failed with " << GetLastError() << '\n';
+                break;
+            }
+
+            string response(buf, cbIO);
+            if (response.find("Error:") != string::npos || response.find("Program is closed") != string::npos) {
+                // Если получено сообщение об ошибке от сервера, выводим его и завершаем работу клиента
+                cout << response << endl;
+                CloseHandle(hPipe); // Закрываем канал
+                break;
+            }
+
+            // Печать ответа от сервера
+            cout << "Server response: " << string(buf, cbIO) << endl;
         }
 
-        // Чтение ответа от сервера
-        char buf[BUFSIZE];
-        fSuccess = ReadFile(hPipe, buf, BUFSIZE, &cbIO, NULL);
-        if (!fSuccess || cbIO == 0) {
-            print_time();
-            cout << "[ERROR] ReadFile failed with " << GetLastError() << '\n';
-            break;
-        }
-
-        // Печать ответа от сервера
-        cout << "Server response: " << string(buf, cbIO) << endl;
+    }
+    catch (exception& ex)
+    {
+        cerr << "Error: " << ex.what() << endl;
     }
 
-    CloseHandle(hPipe);
+    //CloseHandle(hPipe);
     return 0;
 }

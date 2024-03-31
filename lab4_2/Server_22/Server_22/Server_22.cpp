@@ -462,11 +462,13 @@ int main() {
                 expression="";
             }
             else if (str == "break") {
+
+                fSuccess = WriteFile(hPipe, "Program is closed", strlen("Program is closed"), &cbIO, NULL);
                 if (!DisconnectNamedPipe(hPipe)) {
                     print_time(); 
                     cout << "[ERROR] DisconnectNamedPipe failed with " << GetLastError() << '\n';
                 }
-
+                break;
             }
             else {
                 expression += str;
@@ -494,6 +496,13 @@ int main() {
     catch (exception& ex)
     {
         cerr << "Error: " << ex.what() << endl;
+
+        
+
+        string errorMessage = "Error: ";
+        errorMessage += ex.what();
+        fSuccess = WriteFile(hPipe, errorMessage.c_str(), errorMessage.size(), &cbIO, NULL);
+        //CloseHandle(hPipe);
     }
 
     CloseHandle(hPipe);
