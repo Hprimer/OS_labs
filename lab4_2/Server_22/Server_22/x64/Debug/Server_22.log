@@ -1,7 +1,8 @@
 ﻿  Server_22.cpp
-D:\C++\OS_lab4\Server_22\Server_22\Server_22.cpp(438,97): warning C4267: аргумент: преобразование из "size_t" в "DWORD"; возможна потеря данных
-D:\C++\OS_lab4\Server_22\Server_22\Server_22.cpp(454,91): warning C4267: аргумент: преобразование из "size_t" в "DWORD"; возможна потеря данных
-D:\C++\OS_lab4\Server_22\Server_22\Server_22.cpp(466,106): warning C4267: аргумент: преобразование из "size_t" в "DWORD"; возможна потеря данных
-D:\C++\OS_lab4\Server_22\Server_22\Server_22.cpp(486,97): warning C4267: аргумент: преобразование из "size_t" в "DWORD"; возможна потеря данных
-D:\C++\OS_lab4\Server_22\Server_22\Server_22.cpp(504,91): warning C4267: аргумент: преобразование из "size_t" в "DWORD"; возможна потеря данных
-  Server_22.vcxproj -> D:\C++\OS_lab4\Server_22\x64\Debug\Server_22.exe
+C:\Users\наиль\Desktop\уник\4сем\OS_labs\lab4_2\Server_22\Server_22\Server_22.cpp(203,97): warning C4267: аргумент: преобразование из "size_t" в "DWORD"; возможна потеря данных
+C:\Users\наиль\Desktop\уник\4сем\OS_labs\lab4_2\Server_22\Server_22\Server_22.cpp(219,91): warning C4267: аргумент: преобразование из "size_t" в "DWORD"; возможна потеря данных
+C:\Users\наиль\Desktop\уник\4сем\OS_labs\lab4_2\Server_22\Server_22\Server_22.cpp(228,114): warning C4267: аргумент: преобразование из "size_t" в "DWORD"; возможна потеря данных
+C:\Users\наиль\Desktop\уник\4сем\OS_labs\lab4_2\Server_22\Server_22\Server_22.cpp(237,126): warning C4267: аргумент: преобразование из "size_t" в "DWORD"; возможна потеря данных
+C:\Users\наиль\Desktop\уник\4сем\OS_labs\lab4_2\Server_22\Server_22\Server_22.cpp(249,97): warning C4267: аргумент: преобразование из "size_t" в "DWORD"; возможна потеря данных
+C:\Users\наиль\Desktop\уник\4сем\OS_labs\lab4_2\Server_22\Server_22\Server_22.cpp(266,91): warning C4267: аргумент: преобразование из "size_t" в "DWORD"; возможна потеря данных
+  Server_22.vcxproj -> C:\Users\наиль\Desktop\уник\4сем\OS_labs\lab4_2\Server_22\x64\Debug\Server_22.exe
