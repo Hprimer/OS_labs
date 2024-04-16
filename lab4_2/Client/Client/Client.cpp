@@ -117,7 +117,7 @@ int main() {
             break;
         }
 
-        string response(buf, cbIO);
+        string response(buf, cbIO);// Ответ
         if (response.find("[ERROR] ") != string::npos || response.find("Program is closed") != string::npos) {
             // Если получено сообщение об ошибке от сервера, выводим его и завершаем работу клиента
             print_time();
