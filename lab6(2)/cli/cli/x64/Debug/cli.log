@@ -1,0 +1,8 @@
+﻿  MyForm.cpp
+C:\Users\наиль\Desktop\уник\4сем\OS_labs\lab6(2)\cli\cli\MyForm.h(319,27): warning C4244: =: преобразование "wchar_t" в "char", возможна потеря данных
+C:\Users\наиль\Desktop\уник\4сем\OS_labs\lab6(2)\cli\cli\MyForm.h(338,27): warning C4244: =: преобразование "wchar_t" в "char", возможна потеря данных
+C:\Users\наиль\Desktop\уник\4сем\OS_labs\lab6(2)\cli\cli\MyForm.h(356,27): warning C4244: =: преобразование "wchar_t" в "char", возможна потеря данных
+C:\Users\наиль\Desktop\уник\4сем\OS_labs\lab6(2)\cli\cli\MyForm.h(374,27): warning C4244: =: преобразование "wchar_t" в "char", возможна потеря данных
+C:\Users\наиль\Desktop\уник\4сем\OS_labs\lab6(2)\cli\cli\MyForm.h(392,27): warning C4244: =: преобразование "wchar_t" в "char", возможна потеря данных
+  MyForm.obj : обнаружен модуль MSIL; для MSIL последовательная компоновка отключена; выполняется полная компоновка
+  cli.vcxproj -> C:\Users\наиль\Desktop\уник\4сем\OS_labs\lab6(2)\cli\x64\Debug\cli.exe

@@ -1,0 +1,4 @@
+C:\Users\наиль\Desktop\уник\4сем\OS_labs\lab6(2)\cli\cli\x64\Debug\cli.vcxproj.AssemblyReference.cache
+C:\Users\наиль\Desktop\уник\4сем\OS_labs\lab6(2)\cli\cli\x64\Debug\cli.vcxproj.SuggestedBindingRedirects.cache
+C:\Users\наиль\Desktop\уник\4сем\OS_labs\lab6(2)\cli\cli\x64\Debug\cli.MyForm.resources
+C:\Users\наиль\Desktop\уник\4сем\OS_labs\lab6(2)\cli\cli\x64\Debug\cli.vcxproj.GenerateResource.cache

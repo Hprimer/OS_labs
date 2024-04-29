@@ -1,0 +1,42 @@
+Log started!
+Server recieved
+/65
+Server recieved
+-9
+Server recieved
+*5
+Server recieved
+Calculate equation
+Server recieved
+Check division by zero
+Log started!
+Server recieved
++5
+Server recieved
+-8
+Server recieved
+/10
+Server recieved
+Calculate equation
+Log started!
+Log started!
+Log started!
+Server recieved
+Finish working
+Log ended!Log started!
+Server recieved
++8
+Server recieved
+-656
+Log started!
+Server recieved
+-0
+Server recieved
++0
+Server recieved
+*3
+Server recieved
+Clear equation
+Server recieved
+Finish working
+Log ended!
