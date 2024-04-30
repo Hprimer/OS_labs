@@ -1,70 +1,3 @@
-//#pragma once
-//
-//namespace Server {
-//
-//	using namespace System;
-//	using namespace System::ComponentModel;
-//	using namespace System::Collections;
-//	using namespace System::Windows::Forms;
-//	using namespace System::Data;
-//	using namespace System::Drawing;
-//
-//	/// <summary>
-//	/// Сводка для MyForm
-//	/// </summary>
-//	public ref class MyForm : public System::Windows::Forms::Form
-//	{
-//	public:
-//		MyForm(void)
-//		{
-//			InitializeComponent();
-//			//
-//			//TODO: добавьте код конструктора
-//			//
-//		}
-//
-//	protected:
-//		/// <summary>
-//		/// Освободить все используемые ресурсы.
-//		/// </summary>
-//		~MyForm()
-//		{
-//			if (components)
-//			{
-//				delete components;
-//			}
-//		}
-//
-//	private:
-//		/// <summary>
-//		/// Обязательная переменная конструктора.
-//		/// </summary>
-//		System::ComponentModel::Container ^components;
-//
-//#pragma region Windows Form Designer generated code
-//		/// <summary>
-//		/// Требуемый метод для поддержки конструктора — не изменяйте 
-//		/// содержимое этого метода с помощью редактора кода.
-//		/// </summary>
-//		void InitializeComponent(void)
-//		{
-//			this->SuspendLayout();
-//			// 
-//			// MyForm
-//			// 
-//			this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
-//			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
-//			this->ClientSize = System::Drawing::Size(297, 420);
-//			this->Name = L"MyForm";
-//			this->Text = L"MyForm";
-//			this->ResumeLayout(false);
-//
-//		}
-//#pragma endregion
-//	};
-//}
-
-
 #pragma once
 #include <Windows.h>
 #include <vector>
@@ -134,7 +67,6 @@ namespace Server {
 	protected:
 
 	private: System::Windows::Forms::Label^ label1;
-	//private: System::Windows::Forms::Button^ buttonExit;
 
 
 	private:
@@ -210,12 +142,6 @@ namespace Server {
 	private: System::Void MyForm_Load(System::Object^ sender, System::EventArgs^ e) {
 	}
 
-//////////////////
-	//private: System::Void buttonExit_Click(System::Object^ sender, System::EventArgs^ e)
-	//{
-	//	Application::Exit(); // Завершить приложение
-	//}
-///////////////////////////////
 	private: System::Void btn_start_Click(System::Object^ sender, System::EventArgs^ e)
 	{
 		std::ofstream file;
@@ -228,7 +154,7 @@ namespace Server {
 		std::string input = "";
 		std::vector<int> oper;  //вектор для операций;
 		std::vector<double> number;  //вектор для чисел;
-		std::string kekwait = "*/+-"; //возможные операции;
+		std::string operators = "*/+-"; //возможные операции;
 		HANDLE pipe = CreateNamedPipe(L"\\\\.\\pipe\\mypipe", 
 			PIPE_ACCESS_DUPLEX,
 			PIPE_TYPE_MESSAGE | PIPE_READMODE_MESSAGE | PIPE_WAIT,
@@ -268,12 +194,6 @@ namespace Server {
 				textBox1->Update();
 				textBox1->Invalidate();
 				file << "Calculate equation\r\n";
-				//bool zero = 0;
-				//for (int i = 0; i < number.size(); i++)
-				//	if (number[i] == 0 && oper[i] == 1)
-				//		zero = 1;
-				//if (zero) 
-				//	input = "Division by 0";
 				bool incorrect = false;//проверка на корректность 
 				for (int i = 0; i < number.size(); i++)
 					if (oper[0] == 0 || oper[0] == 1 || (number[i] == 0 && oper[i] == 1))
@@ -283,27 +203,28 @@ namespace Server {
 				else
 				{
 					double curr = 0;
-					double answer = 0;
+					double temp = 0;
 					for (int i = 0; i < number.size(); i++) {
-						if (oper[i] == 0) curr *= number[i];
+						if (oper[i] == 0) 
+							curr *= number[i];
 						else if (oper[i] == 1 && number[i] != 0) 
 							curr /= number[i];
 						else if (oper[i] == 2) {
-							answer += curr;
+							temp += curr;
 							curr = number[i];
 						}
 						else if (oper[i] == 3) {
-							answer += curr;
+							temp += curr;
 							curr = -1 * number[i];
 						}
-						std::string ans = std::to_string(answer + curr);
+						std::string ans = std::to_string(temp + curr);
 						input = "Answer: " + ans;
 					}
 				}
-				//////////////
+				
 				number.clear();
 				oper.clear();
-				///////////////
+				
 			}
 			else if (input == "Check")  //проверка деления на 0;
 			{
@@ -311,14 +232,7 @@ namespace Server {
 				textBox1->Update();
 				textBox1->Invalidate();
 				file << "Check division by zero\r\n";
-				/*bool zero = 0;
-				for (int i = 0; i < number.size(); i++)
-					if (number[i] == 0 && oper[i] == 1)
-						zero = 1;
-				if (zero)
-					input = "Division by 0!\r\n";
-				else 
-					input = "No division by 0\r\n";*/
+
 				bool incorrect = false;//проверка на корректность 
 				for (int i = 0; i < number.size(); i++)
 					if (oper[0] == 0 || oper[0] == 1 || (number[i] == 0 && oper[i] == 1))
@@ -376,8 +290,8 @@ namespace Server {
 					else
 					{
 						input.clear();
-						for (int i = 0; i < number.size(); i++)  //выражение целиком
-							input += std::string(1, kekwait[oper[i]]) +	std::to_string(number[i]);
+						for (int i = 0; i < number.size(); i++)  //создание выражения целиком
+							input += std::string(1, operators[oper[i]]) +	std::to_string(number[i]);
 					}
 				}
 			}
@@ -395,7 +309,7 @@ namespace Server {
 	private: System::Void textBox1_TextChanged(System::Object^ sender, System::EventArgs^ e) {
 	}
 
-private: System::Void label1_Click(System::Object^ sender, System::EventArgs^ e) {
-}
+	private: System::Void label1_Click(System::Object^ sender, System::EventArgs^ e) {
+	}
 };
 }

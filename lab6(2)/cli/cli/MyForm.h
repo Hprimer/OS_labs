@@ -1,70 +1,3 @@
-//#pragma once
-//
-//namespace Client {
-//
-//	using namespace System;
-//	using namespace System::ComponentModel;
-//	using namespace System::Collections;
-//	using namespace System::Windows::Forms;
-//	using namespace System::Data;
-//	using namespace System::Drawing;
-//
-//	/// <summary>
-//	/// Сводка для MyForm
-//	/// </summary>
-//	public ref class MyForm : public System::Windows::Forms::Form
-//	{
-//	public:
-//		MyForm(void)
-//		{
-//			InitializeComponent();
-//			//
-//			//TODO: добавьте код конструктора
-//			//
-//		}
-//
-//	protected:
-//		/// <summary>
-//		/// Освободить все используемые ресурсы.
-//		/// </summary>
-//		~MyForm()
-//		{
-//			if (components)
-//			{
-//				delete components;
-//			}
-//		}
-//
-//	private:
-//		/// <summary>
-//		/// Обязательная переменная конструктора.
-//		/// </summary>
-//		System::ComponentModel::Container ^components;
-//
-//#pragma region Windows Form Designer generated code
-//		/// <summary>
-//		/// Требуемый метод для поддержки конструктора — не изменяйте 
-//		/// содержимое этого метода с помощью редактора кода.
-//		/// </summary>
-//		void InitializeComponent(void)
-//		{
-//			this->SuspendLayout();
-//			// 
-//			// MyForm
-//			// 
-//			this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
-//			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
-//			this->ClientSize = System::Drawing::Size(284, 260);
-//			this->Name = L"MyForm";
-//			this->Text = L"MyForm";
-//			this->ResumeLayout(false);
-//
-//		}
-//#pragma endregion
-//	};
-//}
-
-
 #pragma once
 #include <Windows.h>
 #include <fstream>
@@ -115,6 +48,9 @@ namespace Сlient {
     private: System::Windows::Forms::Button^ button5;
     private: System::Windows::Forms::Label^ label1;
     private: System::Windows::Forms::Label^ label2;
+    private: System::Windows::Forms::Button^ button6;
+
+
 
 
 
@@ -140,6 +76,7 @@ namespace Сlient {
                this->button5 = (gcnew System::Windows::Forms::Button());
                this->label1 = (gcnew System::Windows::Forms::Label());
                this->label2 = (gcnew System::Windows::Forms::Label());
+               this->button6 = (gcnew System::Windows::Forms::Button());
                (cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->numericUpDown1))->BeginInit();
                this->SuspendLayout();
                // 
@@ -252,12 +189,23 @@ namespace Сlient {
                this->label2->Text = L"Value";
                this->label2->Click += gcnew System::EventHandler(this, &MyForm::label2_Click);
                // 
+               // button6
+               // 
+               this->button6->Location = System::Drawing::Point(425, 388);
+               this->button6->Name = L"button6";
+               this->button6->Size = System::Drawing::Size(269, 50);
+               this->button6->TabIndex = 11;
+               this->button6->Text = L"Color";
+               this->button6->UseVisualStyleBackColor = true;
+               this->button6->Click += gcnew System::EventHandler(this, &MyForm::button6_Click_1);
+               // 
                // MyForm
                // 
                this->AutoScaleDimensions = System::Drawing::SizeF(12, 24);
                this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
                this->BackColor = System::Drawing::SystemColors::ActiveBorder;
-               this->ClientSize = System::Drawing::Size(707, 390);
+               this->ClientSize = System::Drawing::Size(707, 456);
+               this->Controls->Add(this->button6);
                this->Controls->Add(this->label2);
                this->Controls->Add(this->label1);
                this->Controls->Add(this->button5);
@@ -299,7 +247,7 @@ namespace Сlient {
     }
     private: System::Void btn_send_Click(System::Object^ sender, System::EventArgs^ e)
     {
-
+        
         if (!listBox1->SelectedItem) {
             String^ message = "Arithmetic operation not selected";
             String^ caption = "Please, selected arithmetic operation!";
@@ -410,6 +358,13 @@ namespace Сlient {
     private: System::Void listBox1_SelectedIndexChanged(System::Object^ sender, System::EventArgs^ e) {
     }
     private: System::Void label1_Click(System::Object^ sender, System::EventArgs^ e) {
+    }
+
+
+    private: System::Void button6_Click_1(System::Object^ sender, System::EventArgs^ e) {
+        this->BackColor = Color::Red;
+        this->button2->BackColor = Color::Gold;
+
     }
 };
 }
